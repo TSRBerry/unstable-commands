@@ -1,11 +1,33 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: "Unstable commands"
+description: "An action to retry commands if weird things happen."
+
 inputs:
-  milliseconds: # change this
+  commands:
+    description: "The commands to run."
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+  timeout-minutes:
+    description: "Maximum number of minutes before the commands are cancelled."
+    required: true
+  retry-codes:
+    description: "A comma-separated value containing the exit codes which should cause a retry."
+    required: true
+  shell:
+    description: "The shell to use to run the commands."
+    required: false
+    default: "default-shell"
+  working-directory:
+    description: "The working directory of where to run the commands."
+    required: false
+    default: ${{ github.workspace }}
+  max-retries:
+    description: "Maximum number of retries before giving up."
+    required: false
+    default: "3"
+
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: "node16"
+  main: "dist/index.js"
+
+branding:
+  color: "yellow"
+  icon: "terminal"
