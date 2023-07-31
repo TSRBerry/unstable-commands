@@ -1,7 +1,7 @@
 import * as core from '@actions/core'
-import { spawnSync } from 'child_process'
-import { getInputs } from './inputs'
-import { Shell } from './shells'
+import {spawnSync} from 'child_process'
+import {getInputs} from './inputs'
+import {Shell} from './shells'
 import fs from 'fs/promises'
 import path from 'path'
 import os from 'os'
@@ -24,7 +24,7 @@ export async function runUnstableCommand(
     `unstable-command${shell.scriptSuffix}`
   )
 
-  if (shell.args.filter(x => x.includes("{0}")).length == 0) {
+  if (shell.args.filter(x => x.includes('{0}')).length === 0) {
     throw new Error("Shell does not contain the required argument: '{0}'")
   }
 
@@ -32,10 +32,10 @@ export async function runUnstableCommand(
   await fs.writeFile(filepath, commands.join(os.EOL))
   core.debug('File was written successfully!')
 
-  const shellArgs: string[] = [];
+  const shellArgs: string[] = []
   for (const arg of shell.args) {
-    if (arg.includes("{0}")) {
-      shellArgs.push(arg.replace("{0}", filepath))
+    if (arg.includes('{0}')) {
+      shellArgs.push(arg.replace('{0}', filepath))
       continue
     }
     shellArgs.push(arg)
@@ -87,7 +87,7 @@ export async function runUnstableCommand(
   core.error(`Aborting after ${maxRetries} attempts.`)
   core.setFailed(
     result?.error ??
-    `Child process never returned with a good exit code. Giving up after ${maxRetries} attempts.`
+      `Child process never returned with a good exit code. Giving up after ${maxRetries} attempts.`
   )
 
   return null

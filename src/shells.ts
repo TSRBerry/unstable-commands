@@ -1,7 +1,7 @@
 import os from 'os'
-import { env } from 'process'
+import {env} from 'process'
 import * as io from '@actions/io'
-import { argStringToArray } from '@actions/exec/lib/toolrunner'
+import {argStringToArray} from '@actions/exec/lib/toolrunner'
 
 export interface Shell {
   executable: string
@@ -108,12 +108,11 @@ export async function getShell(shellInput: string): Promise<Shell> {
       if (customShellSplit.length >= 2) {
         shell.executable = await io.which(customShellSplit[0], true)
         customShellSplit.shift()
-        shell.args = argStringToArray(customShellSplit.join(" "))
+        shell.args = argStringToArray(customShellSplit.join(' '))
         break
       }
 
-      throw new Error("Custom shell needs to have at least one argument: '{0}'");
-
+      throw new Error("Custom shell needs to have at least one argument: '{0}'")
   }
 
   return shell
