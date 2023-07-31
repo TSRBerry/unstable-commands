@@ -1,5 +1,5 @@
 import {expect, test} from '@jest/globals'
-import {runUnstableCommand} from '../src/main'
+import {runUnstableCommand} from '../src/run'
 import {getShell} from '../src/shells'
 
 test('unstable command succeeds', async () => {
