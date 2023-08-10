@@ -22,15 +22,15 @@ An action to retry commands if weird things happen.
 
 ### `shell`
 
-The shell to use to run the commands. Use this like the `shell` keyword for steps. Default `"default-shell"`.
+**Optional** The shell to use to run the commands. Use this like the `shell` keyword for steps. Default `"default-shell"`.
 
 ### `working-directory`
 
-The working directory where the commands are executed in. Use this like the `working-directory` keyword for steps. Default `${{ github.workspace }}`.
+**Optional** The working directory where the commands are executed in. Use this like the `working-directory` keyword for steps. Default `${{ github.workspace }}`.
 
 ### `max-retries`
 
-Maximum amount of times the specified commands should be tried before giving up. Default `"3"`.
+**Optional** Maximum amount of times the specified commands should be tried before giving up. Default `"3"`.
 
 ## Example usage
 
