@@ -39,7 +39,7 @@ Use this like the `shell` keyword for [steps](https://docs.github.com/en/actions
 
 **Optional**:
 The working directory where the commands are executed in.
-Use this like the `working-directory` keyword for steps.
+Use this like the `working-directory` keyword for [steps](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsworking-directory).
 
 **Default**: `${{ github.workspace }}`.
 
